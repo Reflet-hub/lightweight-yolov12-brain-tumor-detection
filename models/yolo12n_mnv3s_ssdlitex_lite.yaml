@@ -1,0 +1,67 @@
+# Lightweight YOLOv12 detector used in the study.
+# Ultralytics 8.4.104 configuration.
+#
+# Architecture:
+# - learnable 3-channel BatchNorm input adaptor
+# - truncated ImageNet-pretrained MobileNetV3-Small backbone
+# - depthwise-separable SSDLiteX-inspired FPN-PAN neck
+# - one A2C2f block on the P5 semantic path
+# - three-scale anchor-free Detect head
+
+nc: 3
+reg_max: 16
+scale: n
+
+backbone:
+  # [from, repeats, module, arguments]
+  - [-1, 1, nn.BatchNorm2d, []]
+  - [-1, 1, TorchVision, [96, mobilenet_v3_small, DEFAULT, true, 5, true]]
+  - [1, 1, Index, [24, 4]]
+  - [1, 1, Index, [48, 9]]
+  - [1, 1, Index, [96, 10]]
+
+head:
+  # P5 semantic processing
+  - [4, 1, Conv, [96, 1, 1]]
+  - [-1, 1, DWConv, [96, 5, 1]]
+  - [-1, 1, Conv, [96, 1, 1]]
+  - [-1, 1, A2C2f, [96, true, 1, false, 2.0, 0.6666667]]
+
+  # Top-down P5 -> P4
+  - [-1, 1, nn.Upsample, [null, 2, nearest]]
+  - [3, 1, Conv, [64, 1, 1]]
+  - [[-2, -1], 1, Concat, [1]]
+  - [-1, 1, Conv, [64, 1, 1]]
+  - [-1, 1, DWConv, [64, 3, 1]]
+  - [-1, 1, Conv, [64, 1, 1]]
+
+  # Top-down P4 -> P3
+  - [-1, 1, nn.Upsample, [null, 2, nearest]]
+  - [2, 1, Conv, [48, 1, 1]]
+  - [[-2, -1], 1, Concat, [1]]
+  - [-1, 1, Conv, [48, 1, 1]]
+  - [-1, 1, DWConv, [48, 3, 1]]
+  - [-1, 1, Conv, [48, 1, 1]]
+
+  # Highest-resolution P3 refinement
+  - [-1, 1, DWConv, [48, 3, 1]]
+  - [-1, 1, Conv, [48, 1, 1]]
+
+  # Bottom-up P3 -> P4
+  - [-1, 1, DWConv, [48, 3, 2]]
+  - [-1, 1, Conv, [64, 1, 1]]
+  - [[-1, 14], 1, Concat, [1]]
+  - [-1, 1, Conv, [64, 1, 1]]
+  - [-1, 1, DWConv, [64, 3, 1]]
+  - [-1, 1, Conv, [64, 1, 1]]
+
+  # Bottom-up P4 -> P5
+  - [-1, 1, DWConv, [64, 3, 2]]
+  - [-1, 1, Conv, [96, 1, 1]]
+  - [[-1, 8], 1, Concat, [1]]
+  - [-1, 1, Conv, [96, 1, 1]]
+  - [-1, 1, DWConv, [96, 3, 1]]
+  - [-1, 1, Conv, [96, 1, 1]]
+
+  # Three-scale detection head: P3, P4, P5
+  - [[22, 28, 34], 1, Detect, [nc]]

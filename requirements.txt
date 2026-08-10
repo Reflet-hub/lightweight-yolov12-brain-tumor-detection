@@ -1,0 +1,8 @@
+# Tested experiment environment:
+# Python 3.12.13
+# PyTorch 2.10.0+cu128
+# CUDA 12.8
+#
+# Install the PyTorch build appropriate for your platform when necessary.
+ultralytics==8.4.104
+PyYAML>=6.0,<7.0
