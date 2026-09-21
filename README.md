@@ -1,8 +1,8 @@
-# Lightweight YOLO-Based Brain Tumor Detection
+# Patient-Disjoint Brain Tumor Detection with a Lightweight YOLOv12n-Based Model
 
 Official reproducibility materials for the study:
 
-> **Lightweight YOLO-Based Brain Tumor Detection: Patient-Disjoint Validation and Smartphone Deployment**
+> **Patient-Disjoint Brain Tumor Detection with a Lightweight YOLOv12n-Based Model**
 
 This repository contains the custom model configuration, the three training scripts used for the matched experiments, the adopted-model checkpoint, and access to the patient-disjoint YOLO-formatted dataset.
 
@@ -21,7 +21,7 @@ lightweight-yolov12-brain-tumor-detection/
     └── train_yolov12n_baseline.py
 ```
 
-`adopted_model_best.pt` is the best checkpoint from the full-fine-tuning run. Add it to `models/` before publishing the repository. After upload, it will be available at [models/adopted_model_best.pt](models/adopted_model_best.pt).
+`adopted_model_best.pt` is the best checkpoint from the full-fine-tuning run. . It is available at [models/adopted_model_best.pt](models/adopted_model_best.pt).
 
 ## Dataset
 
