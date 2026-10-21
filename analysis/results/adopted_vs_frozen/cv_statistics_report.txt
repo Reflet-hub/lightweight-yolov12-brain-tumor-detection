@@ -1,0 +1,45 @@
+PATIENT-LEVEL 5-FOLD CROSS-VALIDATION — test-fold metrics computed by Ultralytics
+(test = fold k, validation = fold k+1 for checkpoint selection, training = the other three folds)
+
+adopted: folds [1, 2, 3, 4, 5]
+ test_fold  best_epoch  epochs_run     P     R  mAP50  mAP50_95  AP50_meningioma  AP50_glioma  AP50_pituitary_tumor
+         1         234         334 0.877 0.852  0.888     0.585            0.943        0.756                 0.964
+         2         107         207 0.789 0.825  0.852     0.550            0.966        0.699                 0.892
+         3         170         270 0.840 0.819  0.866     0.571            0.949        0.677                 0.971
+         4         118         218 0.818 0.768  0.829     0.520            0.928        0.647                 0.913
+         5         230         330 0.839 0.815  0.822     0.504            0.929        0.690                 0.847
+mean ± SD across folds: P 0.833 ± 0.032, R 0.816 ± 0.030, mAP50 0.851 ± 0.027, mAP50_95 0.546 ± 0.034, AP50_meningioma 0.943 ± 0.016, AP50_glioma 0.694 ± 0.040, AP50_pituitary_tumor 0.917 ± 0.051
+
+frozen: folds [1, 2, 3, 4, 5]
+ test_fold  best_epoch  epochs_run     P     R  mAP50  mAP50_95  AP50_meningioma  AP50_glioma  AP50_pituitary_tumor
+         1         240         340 0.878 0.789  0.856     0.571            0.925        0.678                 0.966
+         2         148         248 0.830 0.761  0.821     0.517            0.970        0.633                 0.858
+         3         191         291 0.845 0.819  0.857     0.557            0.930        0.671                 0.969
+         4         115         215 0.774 0.724  0.766     0.484            0.855        0.557                 0.887
+         5         151         251 0.771 0.790  0.783     0.471            0.899        0.635                 0.815
+mean ± SD across folds: P 0.820 ± 0.047, R 0.776 ± 0.036, mAP50 0.817 ± 0.041, mAP50_95 0.520 ± 0.044, AP50_meningioma 0.916 ± 0.043, AP50_glioma 0.635 ± 0.048, AP50_pituitary_tumor 0.899 ± 0.068
+
+Check: AP recomputed here from predictions.json vs Ultralytics, max |difference| over all folds and metrics = 0.0001
+
+BOOTSTRAP: 2000 resamples of the test patients within each fold (seed 2026); folds [1, 2, 3, 4, 5], 233 patients
+
+Cross-validated mean (mean of the test folds) with 95% CI
+  adopted   mAP50 0.851 [0.823, 0.875], mAP50_95 0.546 [0.521, 0.570], AP50_meningioma 0.943 [0.908, 0.967], AP50_glioma 0.694 [0.639, 0.743], AP50_pituitary_tumor 0.917 [0.872, 0.949]
+  frozen    mAP50 0.817 [0.787, 0.842], mAP50_95 0.520 [0.496, 0.544], AP50_meningioma 0.916 [0.874, 0.945], AP50_glioma 0.635 [0.579, 0.692], AP50_pituitary_tumor 0.899 [0.850, 0.938]
+
+Sensitivity: pooled out-of-fold evaluation with 95% CI
+  adopted   mAP50 0.849 [0.819, 0.875], mAP50_95 0.542 [0.517, 0.567], AP50_meningioma 0.943 [0.908, 0.970], AP50_glioma 0.689 [0.635, 0.739], AP50_pituitary_tumor 0.914 [0.863, 0.952]
+  frozen    mAP50 0.814 [0.780, 0.842], mAP50_95 0.516 [0.490, 0.542], AP50_meningioma 0.914 [0.873, 0.947], AP50_glioma 0.624 [0.565, 0.681], AP50_pituitary_tumor 0.903 [0.849, 0.944]
+
+PAIRED COMPARISON frozen − adopted on the same test patients (positive = frozen higher)
+  P                      folds +0.001 +0.041 +0.005 -0.045 -0.068 (3/5 higher)
+  R                      folds -0.063 -0.064 -0.001 -0.044 -0.025 (0/5 higher)
+  mAP50                  folds -0.031 -0.032 -0.009 -0.063 -0.039 (0/5 higher) | CV mean -0.035 [-0.047, -0.021] | pooled -0.035 [-0.049, -0.022]
+  mAP50_95               folds -0.014 -0.033 -0.014 -0.036 -0.033 (0/5 higher) | CV mean -0.026 [-0.036, -0.015] | pooled -0.026 [-0.037, -0.015]
+  AP50_meningioma        folds -0.018 +0.004 -0.019 -0.073 -0.030 (1/5 higher) | CV mean -0.027 [-0.047, -0.009] | pooled -0.028 [-0.045, -0.013]
+  AP50_glioma            folds -0.079 -0.066 -0.006 -0.090 -0.055 (0/5 higher) | CV mean -0.059 [-0.086, -0.029] | pooled -0.066 [-0.096, -0.034]
+  AP50_pituitary_tumor   folds +0.003 -0.033 -0.002 -0.026 -0.032 (1/5 higher) | CV mean -0.018 [-0.036, -0.000] | pooled -0.011 [-0.030, +0.004]
+  AP50_95_meningioma     folds -0.002 -0.024 -0.008 -0.045 -0.036 (0/5 higher) | CV mean -0.023 [-0.043, -0.004] | pooled -0.026 [-0.045, -0.007]
+  AP50_95_glioma         folds -0.031 -0.050 -0.013 -0.039 -0.029 (0/5 higher) | CV mean -0.032 [-0.048, -0.014] | pooled -0.033 [-0.052, -0.014]
+  AP50_95_pituitary_tumor folds -0.009 -0.026 -0.022 -0.024 -0.035 (0/5 higher) | CV mean -0.023 [-0.041, -0.005] | pooled -0.018 [-0.037, -0.001]
+  A difference whose 95% CI excludes 0 is considered significant. P and R depend on a per-fold confidence threshold and are reported per fold only.

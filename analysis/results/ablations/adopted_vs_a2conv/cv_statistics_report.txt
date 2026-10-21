@@ -1,0 +1,42 @@
+PATIENT-LEVEL 5-FOLD CROSS-VALIDATION — test-fold metrics computed by Ultralytics
+(test = fold k, validation = fold k+1 for checkpoint selection, training = the other three folds)
+
+adopted: folds [1, 2, 3, 4, 5]
+ test_fold  best_epoch  epochs_run     P     R  mAP50  mAP50_95  AP50_meningioma  AP50_glioma  AP50_pituitary_tumor
+         1         234         334 0.877 0.852  0.888     0.585            0.943        0.756                 0.964
+         2         107         207 0.789 0.825  0.852     0.550            0.966        0.699                 0.892
+         3         170         270 0.840 0.819  0.866     0.571            0.949        0.677                 0.971
+         4         118         218 0.818 0.768  0.829     0.520            0.928        0.647                 0.913
+         5         230         330 0.839 0.815  0.822     0.504            0.929        0.690                 0.847
+mean ± SD across folds: P 0.833 ± 0.032, R 0.816 ± 0.030, mAP50 0.851 ± 0.027, mAP50_95 0.546 ± 0.034, AP50_meningioma 0.943 ± 0.016, AP50_glioma 0.694 ± 0.040, AP50_pituitary_tumor 0.917 ± 0.051
+
+a2conv: folds [1, 2]
+ test_fold  best_epoch  epochs_run     P     R  mAP50  mAP50_95  AP50_meningioma  AP50_glioma  AP50_pituitary_tumor
+         1         157         257 0.905 0.812  0.883     0.578            0.928        0.747                 0.973
+         2         166         266 0.842 0.813  0.854     0.544            0.940        0.729                 0.893
+mean ± SD across folds: P 0.874 ± 0.044, R 0.813 ± 0.001, mAP50 0.868 ± 0.020, mAP50_95 0.561 ± 0.024, AP50_meningioma 0.934 ± 0.009, AP50_glioma 0.738 ± 0.013, AP50_pituitary_tumor 0.933 ± 0.057
+
+Check: AP recomputed here from predictions.json vs Ultralytics, max |difference| over all folds and metrics = 0.0001
+
+BOOTSTRAP: 2000 resamples of the test patients within each fold (seed 2026); folds [1, 2], 91 patients
+
+Cross-validated mean (mean of the test folds) with 95% CI
+  adopted   mAP50 0.870 [0.830, 0.904], mAP50_95 0.567 [0.525, 0.606], AP50_meningioma 0.954 [0.905, 0.984], AP50_glioma 0.728 [0.629, 0.814], AP50_pituitary_tumor 0.928 [0.884, 0.962]
+  a2conv    mAP50 0.868 [0.823, 0.904], mAP50_95 0.561 [0.521, 0.598], AP50_meningioma 0.934 [0.861, 0.976], AP50_glioma 0.738 [0.645, 0.816], AP50_pituitary_tumor 0.933 [0.886, 0.968]
+
+Sensitivity: pooled out-of-fold evaluation with 95% CI
+  adopted   mAP50 0.873 [0.834, 0.906], mAP50_95 0.570 [0.529, 0.607], AP50_meningioma 0.959 [0.914, 0.987], AP50_glioma 0.726 [0.631, 0.810], AP50_pituitary_tumor 0.933 [0.888, 0.970]
+  a2conv    mAP50 0.870 [0.823, 0.906], mAP50_95 0.562 [0.521, 0.598], AP50_meningioma 0.934 [0.855, 0.980], AP50_glioma 0.737 [0.645, 0.815], AP50_pituitary_tumor 0.939 [0.894, 0.971]
+
+PAIRED COMPARISON a2conv − adopted on the same test patients (positive = a2conv higher)
+  P                      folds +0.028 +0.054 (2/2 higher)
+  R                      folds -0.040 -0.011 (0/2 higher)
+  mAP50                  folds -0.005 +0.002 (1/2 higher) | CV mean -0.002 [-0.024, +0.018] | pooled -0.003 [-0.029, +0.019]
+  mAP50_95               folds -0.007 -0.006 (0/2 higher) | CV mean -0.006 [-0.024, +0.010] | pooled -0.008 [-0.027, +0.010]
+  AP50_meningioma        folds -0.015 -0.026 (0/2 higher) | CV mean -0.020 [-0.059, +0.003] | pooled -0.025 [-0.075, +0.004]
+  AP50_glioma            folds -0.009 +0.030 (1/2 higher) | CV mean +0.010 [-0.034, +0.052] | pooled +0.011 [-0.032, +0.052]
+  AP50_pituitary_tumor   folds +0.009 +0.001 (2/2 higher) | CV mean +0.005 [-0.019, +0.027] | pooled +0.006 [-0.022, +0.033]
+  AP50_95_meningioma     folds +0.004 -0.023 (1/2 higher) | CV mean -0.009 [-0.043, +0.022] | pooled -0.013 [-0.050, +0.019]
+  AP50_95_glioma         folds -0.013 +0.021 (1/2 higher) | CV mean +0.004 [-0.023, +0.030] | pooled +0.004 [-0.023, +0.029]
+  AP50_95_pituitary_tumor folds -0.011 -0.016 (0/2 higher) | CV mean -0.014 [-0.037, +0.008] | pooled -0.014 [-0.039, +0.008]
+  A difference whose 95% CI excludes 0 is considered significant. P and R depend on a per-fold confidence threshold and are reported per fold only.

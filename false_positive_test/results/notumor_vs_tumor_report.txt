@@ -1,0 +1,44 @@
+===== main: 1681 no-tumor slices; tumor slices = each model's own test fold
+  config  fold  tumor_correct@0.25  tumor_alarm@0.25  notumor_false_alarm@0.25  tumor_correct@op  notumor_false_alarm@op  notumor_false_alarm@0.50  auc_tumor_vs_notumor
+ adopted     1               0.851             0.943                     0.139             0.825                   0.088                     0.073                 0.964
+ adopted     2               0.847             0.956                     0.387             0.792                   0.228                     0.145                 0.927
+ adopted     3               0.832             0.941                     0.194             0.794                   0.093                     0.087                 0.955
+ adopted     4               0.774             0.896                     0.169             0.717                   0.077                     0.042                 0.942
+ adopted     5               0.829             0.947                     0.196             0.787                   0.092                     0.086                 0.955
+yolov12n     1               0.854             0.948                     0.302             0.817                   0.161                     0.145                 0.938
+yolov12n     2               0.822             0.940                     0.247             0.756                   0.129                     0.109                 0.933
+yolov12n     3               0.829             0.942                     0.281             0.813                   0.180                     0.117                 0.950
+yolov12n     4               0.791             0.900                     0.281             0.744                   0.136                     0.088                 0.908
+yolov12n     5               0.832             0.942                     0.275             0.779                   0.145                     0.102                 0.941
+adopted   tumor_correct@0.25 0.826 ± 0.031, tumor_alarm@0.25 0.937 ± 0.023, notumor_false_alarm@0.25 0.217 ± 0.098, tumor_correct@op 0.783 ± 0.040, notumor_false_alarm@op 0.116 ± 0.063, notumor_false_alarm@0.50 0.087 ± 0.038, auc_tumor_vs_notumor 0.948 ± 0.014
+yolov12n  tumor_correct@0.25 0.826 ± 0.023, tumor_alarm@0.25 0.934 ± 0.020, notumor_false_alarm@0.25 0.277 ± 0.020, tumor_correct@op 0.782 ± 0.033, notumor_false_alarm@op 0.150 ± 0.020, notumor_false_alarm@0.50 0.112 ± 0.021, auc_tumor_vs_notumor 0.934 ± 0.016
+  yolov12n − adopted tumor_correct@0.25: +0.004 -0.025 -0.003 +0.018 +0.003 (mean -0.001, 3/5 folds higher)
+  yolov12n − adopted tumor_alarm@0.25: +0.006 -0.016 +0.002 +0.003 -0.005 (mean -0.002, 3/5 folds higher)
+  yolov12n − adopted notumor_false_alarm@0.25: +0.163 -0.140 +0.087 +0.112 +0.079 (mean +0.060, 4/5 folds higher)
+  yolov12n − adopted tumor_correct@op: -0.007 -0.037 +0.019 +0.027 -0.008 (mean -0.001, 2/5 folds higher)
+  yolov12n − adopted notumor_false_alarm@op: +0.073 -0.099 +0.087 +0.058 +0.053 (mean +0.034, 4/5 folds higher)
+  yolov12n − adopted notumor_false_alarm@0.50: +0.073 -0.036 +0.029 +0.046 +0.015 (mean +0.025, 4/5 folds higher)
+  yolov12n − adopted auc_tumor_vs_notumor: -0.025 +0.006 -0.005 -0.033 -0.014 (mean -0.014, 1/5 folds higher)
+
+===== dhash_unique: 910 no-tumor slices; tumor slices = each model's own test fold
+  config  fold  tumor_correct@0.25  tumor_alarm@0.25  notumor_false_alarm@0.25  tumor_correct@op  notumor_false_alarm@op  notumor_false_alarm@0.50  auc_tumor_vs_notumor
+ adopted     1               0.851             0.943                     0.168             0.825                   0.110                     0.092                 0.958
+ adopted     2               0.847             0.956                     0.382             0.792                   0.242                     0.156                 0.922
+ adopted     3               0.832             0.941                     0.220             0.794                   0.112                     0.105                 0.950
+ adopted     4               0.774             0.896                     0.165             0.717                   0.080                     0.041                 0.940
+ adopted     5               0.829             0.947                     0.199             0.787                   0.098                     0.090                 0.952
+yolov12n     1               0.854             0.948                     0.310             0.817                   0.174                     0.155                 0.934
+yolov12n     2               0.822             0.940                     0.273             0.756                   0.143                     0.123                 0.924
+yolov12n     3               0.829             0.942                     0.312             0.813                   0.209                     0.144                 0.943
+yolov12n     4               0.791             0.900                     0.267             0.744                   0.135                     0.095                 0.908
+yolov12n     5               0.832             0.942                     0.301             0.779                   0.166                     0.119                 0.933
+adopted   tumor_correct@0.25 0.826 ± 0.031, tumor_alarm@0.25 0.937 ± 0.023, notumor_false_alarm@0.25 0.227 ± 0.090, tumor_correct@op 0.783 ± 0.040, notumor_false_alarm@op 0.128 ± 0.065, notumor_false_alarm@0.50 0.097 ± 0.041, auc_tumor_vs_notumor 0.945 ± 0.014
+yolov12n  tumor_correct@0.25 0.826 ± 0.023, tumor_alarm@0.25 0.934 ± 0.020, notumor_false_alarm@0.25 0.293 ± 0.021, tumor_correct@op 0.782 ± 0.033, notumor_false_alarm@op 0.165 ± 0.029, notumor_false_alarm@0.50 0.127 ± 0.023, auc_tumor_vs_notumor 0.928 ± 0.013
+  yolov12n − adopted tumor_correct@0.25: +0.004 -0.025 -0.003 +0.018 +0.003 (mean -0.001, 3/5 folds higher)
+  yolov12n − adopted tumor_alarm@0.25: +0.006 -0.016 +0.002 +0.003 -0.005 (mean -0.002, 3/5 folds higher)
+  yolov12n − adopted notumor_false_alarm@0.25: +0.142 -0.110 +0.092 +0.102 +0.102 (mean +0.066, 4/5 folds higher)
+  yolov12n − adopted tumor_correct@op: -0.007 -0.037 +0.019 +0.027 -0.008 (mean -0.001, 2/5 folds higher)
+  yolov12n − adopted notumor_false_alarm@op: +0.064 -0.099 +0.097 +0.055 +0.068 (mean +0.037, 4/5 folds higher)
+  yolov12n − adopted notumor_false_alarm@0.50: +0.063 -0.033 +0.038 +0.054 +0.029 (mean +0.030, 4/5 folds higher)
+  yolov12n − adopted auc_tumor_vs_notumor: -0.024 +0.002 -0.007 -0.032 -0.019 (mean -0.016, 1/5 folds higher)
+

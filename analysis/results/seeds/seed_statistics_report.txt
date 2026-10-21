@@ -1,0 +1,50 @@
+TRAINING-SEED VARIABILITY — test folds [1, 2], seeds [42, 0, 1] (metrics computed by Ultralytics on the test fold; same splits for every seed)
+Check: AP recomputed here from predictions.json vs Ultralytics, max |difference| = 0.0001
+
+adopted
+ test_fold  seed  best_epoch  epochs_run     P     R  mAP50  mAP50_95  AP50_meningioma  AP50_glioma  AP50_pituitary_tumor
+         1     0         182         282 0.889 0.838  0.895     0.584            0.948        0.790                 0.946
+         1     1         120         220 0.875 0.823  0.880     0.577            0.935        0.726                 0.978
+         1    42         234         334 0.877 0.852  0.888     0.585            0.943        0.756                 0.964
+         2     0         131         231 0.862 0.791  0.846     0.540            0.979        0.688                 0.871
+         2     1          86         186 0.810 0.788  0.838     0.543            0.969        0.681                 0.864
+         2    42         107         207 0.789 0.825  0.852     0.550            0.966        0.699                 0.892
+  fold 1, mean ± SD across seeds (range): mAP50 0.887 ± 0.008 (0.880–0.895), mAP50_95 0.582 ± 0.005 (0.577–0.585)
+  fold 2, mean ± SD across seeds (range): mAP50 0.845 ± 0.007 (0.838–0.852), mAP50_95 0.544 ± 0.005 (0.540–0.550)
+  seed SD pooled within folds (df 4) vs between-fold SD of seed 42 over 5 folds:
+    P                      seed SD 0.027 | fold SD 0.032 | SD across seeds of the folds-[1, 2] mean 0.022
+    R                      seed SD 0.018 | fold SD 0.030 | SD across seeds of the folds-[1, 2] mean 0.017
+    mAP50                  seed SD 0.007 | fold SD 0.027 | SD across seeds of the folds-[1, 2] mean 0.007
+    mAP50_95               seed SD 0.005 | fold SD 0.034 | SD across seeds of the folds-[1, 2] mean 0.004
+    AP50_meningioma        seed SD 0.007 | fold SD 0.016 | SD across seeds of the folds-[1, 2] mean 0.006
+    AP50_glioma            seed SD 0.024 | fold SD 0.040 | SD across seeds of the folds-[1, 2] mean 0.018
+    AP50_pituitary_tumor   seed SD 0.015 | fold SD 0.051 | SD across seeds of the folds-[1, 2] mean 0.010
+
+yolov12n
+ test_fold  seed  best_epoch  epochs_run     P     R  mAP50  mAP50_95  AP50_meningioma  AP50_glioma  AP50_pituitary_tumor
+         1     0          91         191 0.868 0.851  0.897     0.620            0.944        0.785                 0.962
+         1     1         143         243 0.859 0.878  0.902     0.635            0.954        0.773                 0.978
+         1    42         114         214 0.887 0.845  0.896     0.616            0.949        0.770                 0.969
+         2     0         190         290 0.855 0.784  0.844     0.569            0.972        0.680                 0.880
+         2     1          95         195 0.824 0.815  0.847     0.577            0.950        0.710                 0.882
+         2    42          98         198 0.840 0.791  0.843     0.570            0.980        0.711                 0.836
+  fold 1, mean ± SD across seeds (range): mAP50 0.898 ± 0.003 (0.896–0.902), mAP50_95 0.624 ± 0.010 (0.616–0.635)
+  fold 2, mean ± SD across seeds (range): mAP50 0.845 ± 0.002 (0.843–0.847), mAP50_95 0.572 ± 0.004 (0.569–0.577)
+  seed SD pooled within folds (df 4) vs between-fold SD of seed 42 over 5 folds:
+    P                      seed SD 0.015 | fold SD 0.032 | SD across seeds of the folds-[1, 2] mean 0.012
+    R                      seed SD 0.017 | fold SD 0.024 | SD across seeds of the folds-[1, 2] mean 0.017
+    mAP50                  seed SD 0.003 | fold SD 0.023 | SD across seeds of the folds-[1, 2] mean 0.003
+    mAP50_95               seed SD 0.008 | fold SD 0.026 | SD across seeds of the folds-[1, 2] mean 0.007
+    AP50_meningioma        seed SD 0.012 | fold SD 0.023 | SD across seeds of the folds-[1, 2] mean 0.006
+    AP50_glioma            seed SD 0.014 | fold SD 0.037 | SD across seeds of the folds-[1, 2] mean 0.005
+    AP50_pituitary_tumor   seed SD 0.019 | fold SD 0.058 | SD across seeds of the folds-[1, 2] mean 0.014
+
+PAIRED COMPARISON yolov12n − adopted (positive = yolov12n higher), mean over test folds [1, 2], seeds [42, 0, 1]; bootstrap 2000 resamples of the test patients within each fold (seed 2026)
+  seed 42        mAP50 -0.001 [-0.018, +0.019], mAP50_95 +0.025 [+0.007, +0.044], AP50_meningioma +0.010 [-0.006, +0.030], AP50_glioma +0.013 [-0.025, +0.054], AP50_pituitary_tumor -0.025 [-0.056, +0.009]
+  seed 0         mAP50 +0.000 [-0.018, +0.018], mAP50_95 +0.033 [+0.016, +0.049], AP50_meningioma -0.005 [-0.031, +0.018], AP50_glioma -0.007 [-0.033, +0.023], AP50_pituitary_tumor +0.013 [-0.024, +0.047]
+  seed 1         mAP50 +0.016 [-0.004, +0.035], mAP50_95 +0.046 [+0.027, +0.062], AP50_meningioma +0.000 [-0.036, +0.031], AP50_glioma +0.038 [-0.004, +0.082], AP50_pituitary_tumor +0.009 [-0.012, +0.028]
+  mean of seeds  mAP50 +0.005 [-0.006, +0.016], mAP50_95 +0.035 [+0.021, +0.049], AP50_meningioma +0.002 [-0.010, +0.013], AP50_glioma +0.015 [-0.008, +0.040], AP50_pituitary_tumor -0.001 [-0.020, +0.016]
+  per fold, seed-mean of each configuration and number of (seed of a, seed of b) combinations with b higher:
+    fold 1: mAP50 0.887 vs 0.898 (9/9), mAP50_95 0.582 vs 0.624 (9/9), AP50_glioma 0.758 vs 0.776 (6/9)
+    fold 2: mAP50 0.845 vs 0.845 (4/9), mAP50_95 0.544 vs 0.572 (9/9), AP50_glioma 0.689 vs 0.700 (6/9)
+  A difference whose 95% CI excludes 0 is considered significant. The CI reflects the sampling of test patients for the given seed(s); the spread between seeds is reported above.
