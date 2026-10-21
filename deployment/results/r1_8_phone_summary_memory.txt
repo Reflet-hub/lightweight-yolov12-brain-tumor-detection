@@ -1,0 +1,79 @@
+
+========================================
+ANDROID TFLITE LATENCY AND MEMORY BENCHMARK (R1-8)
+========================================
+
+DEVICE
+------
+Manufacturer : Xiaomi
+Brand        : Redmi
+Model        : 2409BRN2CA
+Device       : pond
+Hardware     : mt6768
+SoC manufacturer : Mediatek
+SoC model        : MT6769
+Android      : 16
+SDK          : 36
+Security patch : 2026-07-01
+CPU cores visible : 8
+ABI : [arm64-v8a, armeabi-v7a, armeabi]
+RAM total    : 3646 MB
+TFLite runtime : 2.16.1
+
+CONFIGURATION
+-------------
+CPU threads      : 4
+Warm-up runs     : 10
+Images per run   : 100
+Runs per model   : 3 (alternating order, 60 s pauses)
+Post-processing  : conf > 0.25, class-wise NMS IoU 0.70, max 300
+
+MODEL models/adopted_tflite.tflite
+Input            : [1, 3, 640, 640]
+Measurements     : 300
+TOTAL (ms)       : mean 311.21 | SD 6.07 | median 313.11 | min 294.35 | P95 318.78 | max 321.78
+Images/s         : 3.21
+Round means (ms) : [304.24, 316.06, 313.34]
+  decode         : 11.53 ms
+  preprocessing  : 24.46 ms
+  inference      : 274.49 ms (SD 5.69, P95 281.03)
+  postprocessing : 0.74 ms
+Detections/image : 1.14
+Memory (MiB, increase over the pre-loading baseline of each run;
+        median of the runs, run values in brackets)
+  PSS after model loading    : 14.07  [10.54, 14.07, 16.07]
+  PSS after warm-up (GC)     : 44.70  [38.50, 44.70, 44.71]
+  RSS after warm-up (GC)     : 44.57  [48.01, 44.39, 44.57]
+  native heap after warm-up  : 42.54  [42.32, 42.54, 42.56]
+  Java heap after warm-up    : 3.39  [3.05, 3.39, 3.39]
+  peak RSS during the run    : 58.64  [63.11, 58.59, 58.64]
+  baseline PSS (absolute)    : 57.21  [80.98, 57.21, 51.00]
+  peak RSS source            : RSS after each image (VmHWM reset not allowed)
+
+MODEL models/yolov12n_tflite.tflite
+Input            : [1, 3, 640, 640]
+Measurements     : 300
+TOTAL (ms)       : mean 811.30 | SD 6.58 | median 811.24 | min 785.07 | P95 821.84 | max 829.07
+Images/s         : 1.23
+Round means (ms) : [813.29, 811.28, 809.34]
+  decode         : 11.43 ms
+  preprocessing  : 23.93 ms
+  inference      : 775.38 ms (SD 6.16, P95 785.52)
+  postprocessing : 0.56 ms
+Detections/image : 1.07
+Memory (MiB, increase over the pre-loading baseline of each run;
+        median of the runs, run values in brackets)
+  PSS after model loading    : 49.59  [48.87, 50.53, 49.59]
+  PSS after warm-up (GC)     : 80.13  [73.67, 81.32, 80.13]
+  RSS after warm-up (GC)     : 79.93  [72.80, 80.36, 79.93]
+  native heap after warm-up  : 73.45  [73.43, 73.45, 73.48]
+  Java heap after warm-up    : 10.38  [10.35, 10.38, 10.38]
+  peak RSS during the run    : 109.77  [101.78, 110.45, 109.77]
+  baseline PSS (absolute)    : 53.09  [68.46, 50.41, 53.09]
+  peak RSS source            : RSS after each image (VmHWM reset not allowed)
+
+RESULT FILES
+------------
+/storage/emulated/0/Android/data/com.thesis.braintumor.tflitebenchmark/files/r1_8_phone_latency_memory.json
+/storage/emulated/0/Android/data/com.thesis.braintumor.tflitebenchmark/files/r1_8_phone_summary_memory.txt
+========================================

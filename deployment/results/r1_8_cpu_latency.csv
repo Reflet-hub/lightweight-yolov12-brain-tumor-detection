@@ -1,0 +1,4 @@
+model,mean,sd,median,min,max,p95,images_per_s,round_means,memory_increase_MiB_median,preprocess_ms_mean,inference_ms_mean,postprocess_ms_mean
+adopted_tflite,60.009,4.207,59.19,55.311,93.942,64.806,16.664,"[60.33, 60.27, 59.42]",140.961,2.657,42.602,1.152
+yolov12n_tflite,139.255,6.41,138.044,132.618,184.961,145.265,7.181,"[139.59, 139.49, 138.68]",184.094,2.622,121.973,1.127
+adopted_aug07_tflite,60.623,3.891,59.687,55.545,81.456,67.244,16.495,"[59.79, 60.9, 61.18]",140.871,2.633,43.435,1.185

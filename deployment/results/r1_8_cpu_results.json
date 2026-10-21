@@ -1,0 +1,851 @@
+{
+ "environment": {
+  "python": "3.13.15",
+  "torch": "2.11.0+cpu",
+  "ultralytics": "8.4.104",
+  "cpu": "Intel(R) Xeon(R) CPU @ 2.20GHz",
+  "cpu_count": 4,
+  "gpu": false,
+  "litert-torch": "0.9.4",
+  "ai-edge-litert": "2.2.0"
+ },
+ "export_args": {
+  "format": "litert",
+  "imgsz": 640,
+  "batch": 1
+ },
+ "predict_args": {
+  "imgsz": 640,
+  "conf": 0.25,
+  "iou": 0.7,
+  "max_det": 300
+ },
+ "threads": 4,
+ "warmup": 10,
+ "rounds": 3,
+ "checkpoints": [
+  {
+   "file": "best.pt",
+   "saved": "2026-08-05T10:14:55.097764",
+   "ultralytics": "8.4.104",
+   "params": 746015,
+   "model": "/kaggle/input/datasets/reflet/testyolo12farany/yolo12_mnv3s_ssdlitex_lite_kaggle_fold1/models/yolo12n_mnv3s_ssdlitex_lite.yaml",
+   "seed": 42,
+   "epochs": 400,
+   "patience": 100,
+   "batch": 8,
+   "cos_lr": true,
+   "freeze": null,
+   "epochs_run": 203,
+   "best_epoch": 103,
+   "best_val_mAP50": 0.9032,
+   "best_val_mAP50_95": 0.617
+  },
+  {
+   "file": "bestYOLO.pt",
+   "saved": "2026-08-05T19:38:00.070887",
+   "ultralytics": "8.4.104",
+   "params": 2568633,
+   "model": "/kaggle/working/yolo12n.pt",
+   "seed": 42,
+   "epochs": 400,
+   "patience": 100,
+   "batch": 8,
+   "cos_lr": true,
+   "freeze": null,
+   "epochs_run": 255,
+   "best_epoch": 155,
+   "best_val_mAP50": 0.9218,
+   "best_val_mAP50_95": 0.6555
+  }
+ ],
+ "exports": [
+  {
+   "model": "adopted_pt",
+   "file": "adopted.pt",
+   "size_MiB": 1.742,
+   "sha256": "8b5cd225a8367b08",
+   "ultralytics": NaN,
+   "exported": NaN,
+   "imgsz": NaN,
+   "args": NaN
+  },
+  {
+   "model": "adopted_tflite",
+   "file": "adopted.tflite",
+   "size_MiB": 3.157,
+   "sha256": "4c005458c9fd6175",
+   "ultralytics": "8.4.104",
+   "exported": "2026-10-16T08:56:43.529326",
+   "imgsz": [
+    640,
+    640
+   ],
+   "args": {
+    "data": null,
+    "batch": 1,
+    "fraction": 1.0,
+    "quantize": null
+   }
+  },
+  {
+   "model": "yolov12n_pt",
+   "file": "yolov12n.pt",
+   "size_MiB": 5.289,
+   "sha256": "b30d2637d5f7a10e",
+   "ultralytics": NaN,
+   "exported": NaN,
+   "imgsz": NaN,
+   "args": NaN
+  },
+  {
+   "model": "yolov12n_tflite",
+   "file": "yolov12n.tflite",
+   "size_MiB": 10.152,
+   "sha256": "73b459962b8fccaf",
+   "ultralytics": "8.4.104",
+   "exported": "2026-10-16T08:57:20.338550",
+   "imgsz": [
+    640,
+    640
+   ],
+   "args": {
+    "data": null,
+    "batch": 1,
+    "fraction": 1.0,
+    "quantize": null
+   }
+  },
+  {
+   "model": "adopted_aug07_tflite",
+   "file": "adopted_aug07.tflite",
+   "size_MiB": 3.157,
+   "sha256": "f9824e0751c2ba24",
+   "ultralytics": "8.4.104",
+   "exported": "2026-08-07T03:02:31.505951",
+   "imgsz": [
+    640,
+    640
+   ],
+   "args": {
+    "data": null,
+    "batch": 1,
+    "fraction": 1.0,
+    "quantize": null
+   }
+  }
+ ],
+ "fidelity_fold1": [
+  {
+   "model": "adopted_pt",
+   "P": 0.9001001732361377,
+   "R": 0.8227707299135871,
+   "mAP50": 0.9033060277054373,
+   "mAP50_95": 0.6169812965626326,
+   "AP50_meningioma": 0.9658718028352391,
+   "AP50_glioma": 0.7698091589033671,
+   "AP50_pituitary_tumor": 0.9742371213777061
+  },
+  {
+   "model": "adopted_tflite",
+   "P": 0.8975674174166608,
+   "R": 0.8251635834843705,
+   "mAP50": 0.9024207000424643,
+   "mAP50_95": 0.6146568594739962,
+   "AP50_meningioma": 0.9678292542396552,
+   "AP50_glioma": 0.7690587123676139,
+   "AP50_pituitary_tumor": 0.9703741335201238
+  },
+  {
+   "model": "adopted_aug07_tflite",
+   "P": 0.8975674174166608,
+   "R": 0.8251635834843705,
+   "mAP50": 0.9024207000424643,
+   "mAP50_95": 0.6146568594739962,
+   "AP50_meningioma": 0.9678292542396552,
+   "AP50_glioma": 0.7690587123676139,
+   "AP50_pituitary_tumor": 0.9703741335201238
+  },
+  {
+   "model": "yolov12n_pt",
+   "P": 0.9185472965443351,
+   "R": 0.8751374932866,
+   "mAP50": 0.9194452753770558,
+   "mAP50_95": 0.6540384783006703,
+   "AP50_meningioma": 0.9660435329735938,
+   "AP50_glioma": 0.8133910178298968,
+   "AP50_pituitary_tumor": 0.9789012753276767
+  },
+  {
+   "model": "yolov12n_tflite",
+   "P": 0.9070140875044266,
+   "R": 0.8786523133089791,
+   "mAP50": 0.9187742397473774,
+   "mAP50_95": 0.6500934235266842,
+   "AP50_meningioma": 0.9669348112058657,
+   "AP50_glioma": 0.8103037361973777,
+   "AP50_pituitary_tumor": 0.9790841718388886
+  }
+ ],
+ "cpu_latency": [
+  {
+   "model": "adopted_tflite",
+   "mean": 60.00882500000368,
+   "sd": 4.206557311285898,
+   "median": 59.189649000131794,
+   "min": 55.31072899998435,
+   "max": 93.94189099998584,
+   "p95": 64.80587495010468,
+   "images_per_s": 16.66421563828218,
+   "round_means": [
+    60.33,
+    60.27,
+    59.42
+   ],
+   "memory_increase_MiB_median": 140.9609375,
+   "preprocess_ms_mean": 2.6567107633430473,
+   "inference_ms_mean": 42.602219043326386,
+   "postprocess_ms_mean": 1.1515668000023045
+  },
+  {
+   "model": "yolov12n_tflite",
+   "mean": 139.25488116000756,
+   "sd": 6.409767601785779,
+   "median": 138.04404799998338,
+   "min": 132.6178690001143,
+   "max": 184.9614840000413,
+   "p95": 145.26529605000178,
+   "images_per_s": 7.181076825960401,
+   "round_means": [
+    139.59,
+    139.49,
+    138.68
+   ],
+   "memory_increase_MiB_median": 184.09375,
+   "preprocess_ms_mean": 2.621793763334305,
+   "inference_ms_mean": 121.97316549666236,
+   "postprocess_ms_mean": 1.1268528233244979
+  },
+  {
+   "model": "adopted_aug07_tflite",
+   "mean": 60.62294196333672,
+   "sd": 3.8913285459018376,
+   "median": 59.68652599995039,
+   "min": 55.54462899999635,
+   "max": 81.4556799998627,
+   "p95": 67.24390410001888,
+   "images_per_s": 16.49540533029188,
+   "round_means": [
+    59.79,
+    60.9,
+    61.18
+   ],
+   "memory_increase_MiB_median": 140.87109375,
+   "preprocess_ms_mean": 2.63308454331991,
+   "inference_ms_mean": 43.4345922533339,
+   "postprocess_ms_mean": 1.1849503266648753
+  }
+ ],
+ "benchmark_images": [
+  {
+   "name": "0027.png",
+   "pid": "102675",
+   "class_name": "meningioma",
+   "fold": 1
+  },
+  {
+   "name": "0070.png",
+   "pid": "106442",
+   "class_name": "meningioma",
+   "fold": 1
+  },
+  {
+   "name": "0081.png",
+   "pid": "106720",
+   "class_name": "meningioma",
+   "fold": 1
+  },
+  {
+   "name": "0132.png",
+   "pid": "111532",
+   "class_name": "meningioma",
+   "fold": 1
+  },
+  {
+   "name": "0199.png",
+   "pid": "99017",
+   "class_name": "meningioma",
+   "fold": 1
+  },
+  {
+   "name": "0237.png",
+   "pid": "102420",
+   "class_name": "meningioma",
+   "fold": 1
+  },
+  {
+   "name": "0287.png",
+   "pid": "105937",
+   "class_name": "meningioma",
+   "fold": 1
+  },
+  {
+   "name": "0288.png",
+   "pid": "105937",
+   "class_name": "meningioma",
+   "fold": 1
+  },
+  {
+   "name": "0305.png",
+   "pid": "106720",
+   "class_name": "meningioma",
+   "fold": 1
+  },
+  {
+   "name": "0309.png",
+   "pid": "106720",
+   "class_name": "meningioma",
+   "fold": 1
+  },
+  {
+   "name": "0409.png",
+   "pid": "97737",
+   "class_name": "meningioma",
+   "fold": 1
+  },
+  {
+   "name": "0479.png",
+   "pid": "102675",
+   "class_name": "meningioma",
+   "fold": 1
+  },
+  {
+   "name": "0520.png",
+   "pid": "105937",
+   "class_name": "meningioma",
+   "fold": 1
+  },
+  {
+   "name": "0522.png",
+   "pid": "105937",
+   "class_name": "meningioma",
+   "fold": 1
+  },
+  {
+   "name": "0528.png",
+   "pid": "106442",
+   "class_name": "meningioma",
+   "fold": 1
+  },
+  {
+   "name": "0540.png",
+   "pid": "106720",
+   "class_name": "meningioma",
+   "fold": 1
+  },
+  {
+   "name": "0541.png",
+   "pid": "106720",
+   "class_name": "meningioma",
+   "fold": 1
+  },
+  {
+   "name": "0623.png",
+   "pid": "113098",
+   "class_name": "meningioma",
+   "fold": 1
+  },
+  {
+   "name": "0665.png",
+   "pid": "97607",
+   "class_name": "meningioma",
+   "fold": 1
+  },
+  {
+   "name": "0672.png",
+   "pid": "97737",
+   "class_name": "meningioma",
+   "fold": 1
+  },
+  {
+   "name": "0695.png",
+   "pid": "99162",
+   "class_name": "meningioma",
+   "fold": 1
+  },
+  {
+   "name": "0841.png",
+   "pid": "103148",
+   "class_name": "glioma",
+   "fold": 1
+  },
+  {
+   "name": "0842.png",
+   "pid": "103148",
+   "class_name": "glioma",
+   "fold": 1
+  },
+  {
+   "name": "0843.png",
+   "pid": "103148",
+   "class_name": "glioma",
+   "fold": 1
+  },
+  {
+   "name": "0858.png",
+   "pid": "108479",
+   "class_name": "glioma",
+   "fold": 1
+  },
+  {
+   "name": "0889.png",
+   "pid": "93825",
+   "class_name": "glioma",
+   "fold": 1
+  },
+  {
+   "name": "0934.png",
+   "pid": "107429",
+   "class_name": "pituitary_tumor",
+   "fold": 1
+  },
+  {
+   "name": "0950.png",
+   "pid": "108858",
+   "class_name": "pituitary_tumor",
+   "fold": 1
+  },
+  {
+   "name": "1023.png",
+   "pid": "114094",
+   "class_name": "pituitary_tumor",
+   "fold": 1
+  },
+  {
+   "name": "1030.png",
+   "pid": "101029",
+   "class_name": "pituitary_tumor",
+   "fold": 1
+  },
+  {
+   "name": "1033.png",
+   "pid": "101029",
+   "class_name": "pituitary_tumor",
+   "fold": 1
+  },
+  {
+   "name": "1053.png",
+   "pid": "107429",
+   "class_name": "pituitary_tumor",
+   "fold": 1
+  },
+  {
+   "name": "1129.png",
+   "pid": "112074",
+   "class_name": "pituitary_tumor",
+   "fold": 1
+  },
+  {
+   "name": "1141.png",
+   "pid": "112746",
+   "class_name": "pituitary_tumor",
+   "fold": 1
+  },
+  {
+   "name": "1142.png",
+   "pid": "112746",
+   "class_name": "pituitary_tumor",
+   "fold": 1
+  },
+  {
+   "name": "1161.png",
+   "pid": "114094",
+   "class_name": "pituitary_tumor",
+   "fold": 1
+  },
+  {
+   "name": "1199.png",
+   "pid": "108858",
+   "class_name": "pituitary_tumor",
+   "fold": 1
+  },
+  {
+   "name": "1248.png",
+   "pid": "112074",
+   "class_name": "pituitary_tumor",
+   "fold": 1
+  },
+  {
+   "name": "1326.png",
+   "pid": "103671",
+   "class_name": "pituitary_tumor",
+   "fold": 1
+  },
+  {
+   "name": "1379.png",
+   "pid": "105475",
+   "class_name": "pituitary_tumor",
+   "fold": 1
+  },
+  {
+   "name": "1433.png",
+   "pid": "98874",
+   "class_name": "pituitary_tumor",
+   "fold": 1
+  },
+  {
+   "name": "1449.png",
+   "pid": "99223",
+   "class_name": "pituitary_tumor",
+   "fold": 1
+  },
+  {
+   "name": "1450.png",
+   "pid": "99223",
+   "class_name": "pituitary_tumor",
+   "fold": 1
+  },
+  {
+   "name": "1463.png",
+   "pid": "101029",
+   "class_name": "pituitary_tumor",
+   "fold": 1
+  },
+  {
+   "name": "1467.png",
+   "pid": "101029",
+   "class_name": "pituitary_tumor",
+   "fold": 1
+  },
+  {
+   "name": "1558.png",
+   "pid": "105187",
+   "class_name": "pituitary_tumor",
+   "fold": 1
+  },
+  {
+   "name": "1559.png",
+   "pid": "105187",
+   "class_name": "pituitary_tumor",
+   "fold": 1
+  },
+  {
+   "name": "1560.png",
+   "pid": "105187",
+   "class_name": "pituitary_tumor",
+   "fold": 1
+  },
+  {
+   "name": "1563.png",
+   "pid": "105475",
+   "class_name": "pituitary_tumor",
+   "fold": 1
+  },
+  {
+   "name": "1597.png",
+   "pid": "97890",
+   "class_name": "pituitary_tumor",
+   "fold": 1
+  },
+  {
+   "name": "1598.png",
+   "pid": "97890",
+   "class_name": "pituitary_tumor",
+   "fold": 1
+  },
+  {
+   "name": "1599.png",
+   "pid": "97890",
+   "class_name": "pituitary_tumor",
+   "fold": 1
+  },
+  {
+   "name": "1616.png",
+   "pid": "98874",
+   "class_name": "pituitary_tumor",
+   "fold": 1
+  },
+  {
+   "name": "1618.png",
+   "pid": "98874",
+   "class_name": "pituitary_tumor",
+   "fold": 1
+  },
+  {
+   "name": "1636.png",
+   "pid": "99223",
+   "class_name": "pituitary_tumor",
+   "fold": 1
+  },
+  {
+   "name": "1789.png",
+   "pid": "97890",
+   "class_name": "pituitary_tumor",
+   "fold": 1
+  },
+  {
+   "name": "1813.png",
+   "pid": "98874",
+   "class_name": "pituitary_tumor",
+   "fold": 1
+  },
+  {
+   "name": "1815.png",
+   "pid": "98874",
+   "class_name": "pituitary_tumor",
+   "fold": 1
+  },
+  {
+   "name": "1838.png",
+   "pid": "99223",
+   "class_name": "pituitary_tumor",
+   "fold": 1
+  },
+  {
+   "name": "1840.png",
+   "pid": "99223",
+   "class_name": "pituitary_tumor",
+   "fold": 1
+  },
+  {
+   "name": "1844.png",
+   "pid": "MR048294",
+   "class_name": "glioma",
+   "fold": 1
+  },
+  {
+   "name": "1922.png",
+   "pid": "MR024780G",
+   "class_name": "glioma",
+   "fold": 1
+  },
+  {
+   "name": "1923.png",
+   "pid": "MR024780G",
+   "class_name": "glioma",
+   "fold": 1
+  },
+  {
+   "name": "1925.png",
+   "pid": "MR024780G",
+   "class_name": "glioma",
+   "fold": 1
+  },
+  {
+   "name": "1935.png",
+   "pid": "MR024780G",
+   "class_name": "glioma",
+   "fold": 1
+  },
+  {
+   "name": "1968.png",
+   "pid": "MR050687",
+   "class_name": "glioma",
+   "fold": 1
+  },
+  {
+   "name": "2087.png",
+   "pid": "MR053110B",
+   "class_name": "glioma",
+   "fold": 1
+  },
+  {
+   "name": "2091.png",
+   "pid": "MR053110B",
+   "class_name": "glioma",
+   "fold": 1
+  },
+  {
+   "name": "2100.png",
+   "pid": "MR054875",
+   "class_name": "glioma",
+   "fold": 1
+  },
+  {
+   "name": "2101.png",
+   "pid": "MR054875",
+   "class_name": "glioma",
+   "fold": 1
+  },
+  {
+   "name": "2103.png",
+   "pid": "MR054875",
+   "class_name": "glioma",
+   "fold": 1
+  },
+  {
+   "name": "2145.png",
+   "pid": "MR024780D",
+   "class_name": "glioma",
+   "fold": 1
+  },
+  {
+   "name": "2238.png",
+   "pid": "MR024780B",
+   "class_name": "glioma",
+   "fold": 1
+  },
+  {
+   "name": "2244.png",
+   "pid": "MR049104",
+   "class_name": "glioma",
+   "fold": 1
+  },
+  {
+   "name": "2282.png",
+   "pid": "MR024780G",
+   "class_name": "glioma",
+   "fold": 1
+  },
+  {
+   "name": "2283.png",
+   "pid": "MR024780G",
+   "class_name": "glioma",
+   "fold": 1
+  },
+  {
+   "name": "2296.png",
+   "pid": "MR049453B",
+   "class_name": "glioma",
+   "fold": 1
+  },
+  {
+   "name": "2312.png",
+   "pid": "MR050687",
+   "class_name": "glioma",
+   "fold": 1
+  },
+  {
+   "name": "2315.png",
+   "pid": "MR050687",
+   "class_name": "glioma",
+   "fold": 1
+  },
+  {
+   "name": "2414.png",
+   "pid": "MR048297",
+   "class_name": "glioma",
+   "fold": 1
+  },
+  {
+   "name": "2545.png",
+   "pid": "MR048294",
+   "class_name": "glioma",
+   "fold": 1
+  },
+  {
+   "name": "2568.png",
+   "pid": "MR051651",
+   "class_name": "glioma",
+   "fold": 1
+  },
+  {
+   "name": "2570.png",
+   "pid": "MR051651",
+   "class_name": "glioma",
+   "fold": 1
+  },
+  {
+   "name": "2592.png",
+   "pid": "MR052550",
+   "class_name": "glioma",
+   "fold": 1
+  },
+  {
+   "name": "2621.png",
+   "pid": "MR053110B",
+   "class_name": "glioma",
+   "fold": 1
+  },
+  {
+   "name": "2622.png",
+   "pid": "MR053110B",
+   "class_name": "glioma",
+   "fold": 1
+  },
+  {
+   "name": "2667.png",
+   "pid": "MR053110E",
+   "class_name": "glioma",
+   "fold": 1
+  },
+  {
+   "name": "2668.png",
+   "pid": "MR053110E",
+   "class_name": "glioma",
+   "fold": 1
+  },
+  {
+   "name": "2680.png",
+   "pid": "MR024780D",
+   "class_name": "glioma",
+   "fold": 1
+  },
+  {
+   "name": "2740.png",
+   "pid": "MR053110E",
+   "class_name": "glioma",
+   "fold": 1
+  },
+  {
+   "name": "2820.png",
+   "pid": "MR024780B",
+   "class_name": "glioma",
+   "fold": 1
+  },
+  {
+   "name": "2828.png",
+   "pid": "MR048297",
+   "class_name": "glioma",
+   "fold": 1
+  },
+  {
+   "name": "2854.png",
+   "pid": "MR049104",
+   "class_name": "glioma",
+   "fold": 1
+  },
+  {
+   "name": "2855.png",
+   "pid": "MR049104",
+   "class_name": "glioma",
+   "fold": 1
+  },
+  {
+   "name": "2856.png",
+   "pid": "MR049104",
+   "class_name": "glioma",
+   "fold": 1
+  },
+  {
+   "name": "2886.png",
+   "pid": "MR024780G",
+   "class_name": "glioma",
+   "fold": 1
+  },
+  {
+   "name": "2887.png",
+   "pid": "MR024780G",
+   "class_name": "glioma",
+   "fold": 1
+  },
+  {
+   "name": "2900.png",
+   "pid": "MR050687",
+   "class_name": "glioma",
+   "fold": 1
+  },
+  {
+   "name": "2947.png",
+   "pid": "MR051651",
+   "class_name": "glioma",
+   "fold": 1
+  },
+  {
+   "name": "3010.png",
+   "pid": "MR054875",
+   "class_name": "glioma",
+   "fold": 1
+  }
+ ]
+}
